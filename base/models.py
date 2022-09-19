@@ -16,6 +16,12 @@ class Room(models.Model):
     # participants = 
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    # order rooms with newset first
+    class Meta:
+           ordering = ['-updated', '-created'] 
+
+
     # create uuid field 
     def __str__(self):
         return self.name
@@ -27,8 +33,12 @@ class Message(models.Model):
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    
+    # Visa nyaste meddelandena först
+    class Meta:
+           ordering = ['-updated', '-created'] 
     def __str__(self):
-        return self.body[0:50]
+        return self.body[0:50] # visa endast första 50 bokstäverna
 
 
 

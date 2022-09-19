@@ -2,8 +2,39 @@
 
 
 {% block content%}
-<h1>{{room.name}}</h1>
-<h1>{{room.host}}</h1>
+<div class="roomContainer">
+
+    <h1>{{room.name}}</h1>
+    <p>{{room.description}}</p>
+
+    <div class="commentWrapper">
+        <hr>
+
+
+        {% for message in roomMessages%}
+        {% if request.user == message.user%}
+      
+        <a href="{% url 'delete-message' message.id %}">Delete</a>
+        {% endif%}
+       
+        <small>{{message.created|timesince}} sedan</small>
+        <p class="message">{{message.body}}</p>
+        <hr>
+        {% endfor %}
+
+    </div>
+
+    {% if request.user.is_authenticated%}
+    <div class="commentForm">
+        <form method="POST" action="">
+            {% csrf_token%}
+            <input type="text" name="body" placeholder="Skriv Meddelande">
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+
 {% endblock content%}
 
 
@@ -11,8 +42,7 @@
 
 <style>
     .message {
-        background-color: lightblue;
+        background-color: lightgrey;
         margin: 30px 0;
     }
 </style>
-

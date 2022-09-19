@@ -1,0 +1,11 @@
+<h3>Alla Ämnen</h3>
+<div>
+    <a href="{% url 'home' %}">Alla</a>
+</div>
+{% for topic in topics%}
+<div>
+    <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a> <!-- lägg in ämnesnamnet i url -->
+
+</div>
+{% endfor%}
+<hr>

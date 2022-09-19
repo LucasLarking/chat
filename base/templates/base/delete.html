@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+
+{% block content%}
+    <form action="" method="POST">
+        {% csrf_token%}
+        <p>Är du säker att du vill radera "{{obj}}"?</p>
+        <a href="{{request.META.HTTP_REFERER}}">Gå tillbake</a> <!-- skicka tillbaka användare om den ångrar sig -->
+        <input type="submit" value="Konfirmera">
+    </form>
+{% endblock content%}
+
+
