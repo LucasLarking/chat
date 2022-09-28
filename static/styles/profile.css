@@ -1,0 +1,68 @@
+.profile {
+  margin-top: 5%;
+}
+
+.profile h1 {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.profileContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profileContainer h1 {
+  text-align: center;
+  background-color: red;
+}
+
+.profileContainer h2 {
+  margin-bottom: 3rem;
+}
+
+.profielThreads .room {
+  width: 50rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .profile {
+    width: 95%;
+    margin: auto;
+  }
+  .profileContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .profielThreads {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    border: 1px solid black;
+  }
+  .profielThreads .room {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  .profileRecentActivity {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profileRecentActivity .latest {
+    width: 50rem;
+    max-width: 100%;
+  }
+  .profileContainer h2 {
+    margin-bottom: 1rem;
+  }
+  .profileRecentActivity {
+    margin-top: 4rem;
+  }
+}

@@ -1,9 +1,28 @@
-{% extends 'main.html' %} {% block content %}
-<div>
-    <form method="POST" action="">
-        {% csrf_token %} {{form.as_p}}
-        <input type="submit" value="KONFIRMERA">
-    </form>
-</div>
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
 
+
+<div class="createRoomPage">
+    <div class="create">
+        <div class="left">
+            <img src="/mancreate.png" alt="">
+            <img src="{% static 'images/mancreate.png' %}" alt="">
+        </div>
+        <div class="right">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {% for field in form %}
+                <div>
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                    <span class="errorMessage {{field.name}}Error"></span>
+                </div>
+                {% endfor %}
+
+                <input class="submit" type="submit" value="KONFIRMERA">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content%}

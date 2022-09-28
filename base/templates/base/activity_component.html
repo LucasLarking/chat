@@ -1,16 +1,6 @@
-<h3>Senaste Nytt</h3>
-<hr>
-
-{% for message in room_messages %}
-<div class="recentMessage">
-    <small>{{message.created|timesince}}</small>
-    <small>Kommenterade till "{{message.room}}"</small>
-    <p>{{message}}</p>
-    {% if request.user == message.user%}
-  
-    <a href="{% url 'delete-message' message.id %}">Delete</a>
-    {% endif%}
-    <hr>
-</div>
-
-{% endfor%}
+{% for message in room_messages%}
+<a href="{% url 'room' message.room.id %}" class="latest">
+    <h4><span class="small">Kommentar i</span> "{{message.room}}"</h4>
+    <p>{{message.body}}</p>
+</a>
+{% endfor %}

@@ -1,0 +1,80 @@
+{% for room in rooms%}
+<div class="room">
+
+    <a href="{% url 'room' room.id%}" class="top">
+        <div>
+            <h3>{{room.name}}</h3>
+            <span class="subject" style="background-color:{{room.topic.color}}">{{room.topic.name}}</span>
+        </div>
+        <p>{{room.description}}</p>
+    </a>
+
+    <div class="bottom">
+        <span class="date">Posted {{room.created}} - {{room.created|timesince}} ago</span>
+        {% if request.user == room.host%}
+        <div>
+            <a href="{% url 'delete-room' room.id %}" class="edit">Radera</a>
+            <a href="{% url 'update-room' room.id %}" class="edit">Redigera</a>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endfor %}
+<div class="pagination">
+
+
+    <span>Sida {{rooms.number}} av {{rooms.paginator.num_pages}}</span>
+    <div class="desktop">
+        {% if rooms.has_previous%}
+        <a class="pageNum" href="?page=1">&#171;</a>
+        <a class="pageNum" href="?page={{rooms.previous_page_number}}">&#8249;</a>
+
+        <!-- Faktiska nummer -->
+        {% if smallLeft%}
+        <a class="pageNum" href="?page={{smallLeft}}">{{smallLeft}}</a>
+
+        {% endif %}
+        <a href="?page={{rooms.previous_page_number}}" class="pageNum ">{{rooms.previous_page_number}}</a> {% else %}
+        <span class="pageNum">&#171;</span>
+        <span class="pageNum">&#8249;</span> {% endif %}
+
+        <span class="pageNum currentPageNum">{{rooms.number}}</span>
+
+        {% if rooms.has_next%}
+
+        <a class="pageNum" href="?page={{rooms.next_page_number}}">{{rooms.next_page_number}}</a>
+
+        {% if bigRight%}
+        <a class="pageNum" href="?page={{bigRight}}">{{bigRight}}</a>
+
+        {% endif %}
+        <a class="pageNum" href="?page={{rooms.next_page_number}}">&#8250;</a>
+        <a class="pageNum" href="?page={{rooms.paginator.num_pages}}">&#187;</a>
+
+        {% else %}
+        <span class="pageNum disabled">&#8250;</span>
+        <span class="pageNum disabled">&#187;</span>
+        {% endif%}
+    </div>
+
+    <div class="mobile">
+        {% if rooms.has_previous%}
+        <a class="pageNum" href="?page=1">&#171;</a>
+        <a class="pageNum" href="?page={{rooms.previous_page_number}}">&#8249;</a> {% else %}
+        <span class="pageNum">&#171;</span>
+        <span class="pageNum">&#8249;</span> {% endif %}
+
+        <span class="pageNum currentPageNum">{{rooms.number}}</span>
+
+        {% if rooms.has_next%}
+
+        <a class="pageNum" href="?page={{rooms.next_page_number}}">&#8250;</a>
+        <a class="pageNum" href="?page={{rooms.paginator.num_pages}}">&#187;</a> {% else %}
+        <span class="pageNum disabled">&#8250;</span>
+        <span class="pageNum disabled">&#187;</span> {% endif%}
+    </div>
+
+
+
+</div>

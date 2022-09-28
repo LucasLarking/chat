@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% block content%}
+
+<div class="allTopics">
+    <h1>Alla Ämnen</h1>
+    {% include 'base/topics_component.html'%}
+
+    <div class="pagination">
+        <span>Sida {{topics.number}} av {{topics.paginator.num_pages}}</span>
+        <div class="desktop">
+            {% if topics.has_previous%}
+            <a class="pageNum" href="?page=1">&#171;</a>
+            <a class="pageNum" href="?page={{topics.previous_page_number}}">&#8249;</a>
+
+            <!-- Faktiska nummer -->
+            {% if smallLeft%}
+            <a class="pageNum" href="?page={{smallLeft}}">{{smallLeft}}</a>
+            {% endif %}
+            <a href="?page={{topics.previous_page_number}}" class="pageNum ">{{topics.previous_page_number}}</a>
+            {% else %}
+            <span class="pageNum">&#171;</span>
+            <span class="pageNum">&#8249;</span> {% endif %}
+            <span class="pageNum currentPageNum">{{topics.number}}</span>
+
+            {% if topics.has_next%}
+            <a class="pageNum" href="?page={{topics.next_page_number}}">{{topics.next_page_number}}</a>
+            {% if bigRight%}
+            <a class="pageNum" href="?page={{bigRight}}">{{bigRight}}</a>
+            {% endif %}
+            <a class="pageNum" href="?page={{topics.next_page_number}}">&#8250;</a>
+            <a class="pageNum last" href="?page={{topics.paginator.num_pages}}">&#187;</a>
+            {% else %}
+            <span class="pageNum disabled">&#8250;</span>
+            <span class="pageNum disabled last">&#187;</span>
+            {% endif%}
+        </div>
+
+        <div class="mobile">
+            {% if topics.has_previous%}
+            <a class="pageNum" href="?page=1">&#171;</a>
+            <a class="pageNum" href="?page={{topics.previous_page_number}}">&#8249;</a> {% else %}
+            <span class="pageNum">&#171;</span>
+            <span class="pageNum">&#8249;</span> {% endif %}
+            <span class="pageNum currentPageNum">{{topics.number}}</span>
+
+            {% if topics.has_next%}
+            <a class="pageNum" href="?page={{topics.next_page_number}}">&#8250;</a>
+            <a class="pageNum last" href="?page={{topics.paginator.num_pages}}">&#187;</a>
+            {% else %}
+            <span class="pageNum disabled">&#8250;</span>
+            <span class="pageNum disabled last">&#187;</span> {% endif%}
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

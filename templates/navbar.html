@@ -1,18 +1,31 @@
-<a href="/">
-    Hem
-</a>
-<!-- Visa logga-ut-knappen om man är inloggad, annars logga-in-knappen -->
-{% if request.user.is_authenticated%}
+<nav>
+    <div>
 
-<a href="{% url 'logout' %}">Logga ut</a>
-<!-- <span>{{request.user}}</span> -->
-<a href="{% url 'user-profile' request.user.id%}">{{request.user}}</a>
+        <a class="" href="{% url 'home' %}">HEM</a>
+        <!-- Visa logga-ut-knappen om man är inloggad, annars logga-in-knappen -->
+        {% if request.user.is_authenticated%}
 
-<a href=""></a>
-{% else%}
-<a href="{% url 'login' %}">Logga in</a> {% endif%}
+        <a href="{% url 'logout' %}">LOGGA UT</a>
+        <!-- <span>{{request.user}}</span> -->
 
-<!-- skapa sökbar -->
-<form action="{% url 'home' %}" method="GET">
-    <input type="text" name="q" placeholder="Sök Efter Diskutioner">
-</form>
+
+        <a href=""></a>
+        {% else%}
+        <a href="{% url 'login' %}">LOGGA IN</a> {% endif%}
+
+        <!-- skapa sökbar -->
+        <!-- <form action="{% url 'home' %}" method="GET">
+            <input type="text" action="{% url 'home' %}" method="GET" name="q" placeholder="Sök Efter Diskutioner">
+        </form> -->
+
+    </div>
+    <div>
+        {% if request.user.is_authenticated%}
+        <a href="{% url 'user-profile' request.user.id%}">{{request.user}}</a> {% endif%}
+        <a class="plusContainer" href="{% url 'create-room' %}"><div class="plus"><span class="strokes"></span></div></a>
+
+
+
+    </div>
+
+</nav>

@@ -1,0 +1,87 @@
+.discussionContainer {
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 8rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.discussion {
+  width: 60rem;
+  background-color: white;
+  padding: 40px;
+}
+
+.discussion .head textarea {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 100%;
+  min-height: 10rem;
+  min-width: 100%;
+  padding: 2rem;
+  border: 1px solid #e7e8eb;
+  background-color: #f7f9fc;
+  border-radius: 2px;
+  outline: none;
+  font-size: 1.4rem;
+}
+
+.discussion .head input {
+  margin-bottom: 4rem;
+
+  padding: 0.7rem 2.3rem;
+  /* border:  1px solid blue; */
+  transition: 0.2s;
+  border: 2px solid #521ecc;
+  background-color: #f7f9fc;
+  cursor: pointer;
+}
+
+.discussion .head input:hover {
+  background-color: #521ecc;
+  color: white;
+}
+
+.discussion .head p {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.discussion .info span {
+  font-size: 1rem;
+}
+
+.discussion .message {
+  border-left: 2px solid gray;
+  background-color: #f7f9fc;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.discussion .bottom {
+  display: flex;
+  gap: 2rem;
+}
+
+.discussion a {
+  text-decoration: none;
+}
+
+.discussion .message p {
+  font-size: 1.4rem;
+}
+
+.discussion .message span {
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .discussion {
+    padding: 5%;
+  }
+}

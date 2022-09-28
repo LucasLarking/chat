@@ -1,48 +1,55 @@
 {% extends 'main.html' %}
-
-
 {% block content%}
-<div class="roomContainer">
 
-    <h1>{{room.name}}</h1>
-    <p>{{room.description}}</p>
+<div class="discussionContainer">
 
-    <div class="commentWrapper">
-        <hr>
+    <div class="discussion">
+        <div class="head">
+            <h2 class="title">{{room.name}}</h2>
+            <p>{{room.description}}</p>
 
+            <div class="info">
+                <span class="date">Posten 31 March - 19 Days ago</span>
+            </div>
+            {% if request.user.is_authenticated%}
+            <div class="addMesage">
+                <form method="POST" action="">
+                    {% csrf_token%}
+                    <textarea name="body" id="" cols="30" rows="10" placeholder="Vad tycker du?"></textarea>
+                    <input type="submit" value="Skicka">
+                </form>
+            </div>
+            {% endif %}
+
+        </div>
 
         {% for message in roomMessages%}
-        {% if request.user == message.user%}
-      
-        <a href="{% url 'delete-message' message.id %}">Delete</a>
-        {% endif%}
-       
-        <small>{{message.created|timesince}} sedan</small>
-        <p class="message">{{message.body}}</p>
-        <hr>
+
+        <div class="message">
+            <div class="top">
+
+                <p>{{message.body}}</p>
+            </div>
+            <div class="bottom">
+                <div class="info">
+                    <span class="date">{{message.created|timesince}} sedan</span>
+                </div>
+                {% if request.user == message.user%}
+
+                <a href="{% url 'delete-message' message.id %}">Delete</a>
+                {% endif%}
+            </div>
+
+
+
+        </div>
+
         {% endfor %}
 
+
     </div>
 
-    {% if request.user.is_authenticated%}
-    <div class="commentForm">
-        <form method="POST" action="">
-            {% csrf_token%}
-            <input type="text" name="body" placeholder="Skriv Meddelande">
-        </form>
-    </div>
-    {% endif %}
+
 </div>
 
-
 {% endblock content%}
-
-
-
-
-<style>
-    .message {
-        background-color: lightgrey;
-        margin: 30px 0;
-    }
-</style>

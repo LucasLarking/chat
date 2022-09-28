@@ -1,0 +1,214 @@
+.bgImg {
+  position: absolute;
+  left: -4%;
+  width: 40%;
+  z-index: -1;
+  bottom: 0%;
+  -webkit-transform: rotate(-15deg);
+  transform: rotate(-15deg);
+}
+
+.loginPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.login {
+  width: 80rem;
+  height: 40rem;
+  margin-top: 5%;
+  background-color: white;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: hidden;
+}
+
+.login .signUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+  -ms-flex-pack: right;
+  justify-content: right;
+  margin-top: 3rem;
+}
+
+.login .signUp p {
+  opacity: 0.5;
+}
+
+.login .signUp a {
+  opacity: 0.7;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #521ecc;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  margin-left: 7px;
+}
+
+.login .signUp a:hover {
+  opacity: 1;
+}
+
+.login .mobileSignUp {
+  display: none;
+}
+
+.login .top {
+  float: right;
+  background-color: red;
+}
+
+.login .leftRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.login .left {
+  width: 50%;
+  max-height: 100%;
+}
+
+.login img {
+  max-width: 100%;
+  max-width: 70%;
+  margin-top: 3rem;
+  margin-left: 3rem;
+}
+
+.login .right {
+  width: 30rem;
+  /* padding: 2rem 0; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 10%;
+  position: relative;
+}
+
+.login .right div {
+  margin: 2rem 0;
+}
+
+.login label {
+  font-size: 1rem;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.login input {
+  display: block;
+  background-color: transparent;
+  width: 30rem;
+  padding: 1rem;
+  border: 1px solid #e7e8eb;
+  background-color: #f7f9fc;
+  border-radius: 2px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.login input:hover {
+  color: black;
+}
+
+.login .submit {
+  width: 30rem;
+  padding: 1rem;
+  font-size: 1rem;
+  color: black;
+  border: 1px solid #521ecc;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.login .submit:hover {
+  background-color: #521ecc;
+  color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+  .login {
+    width: 50rem;
+    padding: 4rem 6rem;
+    max-width: 100%;
+  }
+  .login .signUp {
+    margin-bottom: 3rem;
+  }
+  .login .left {
+    width: 0;
+    display: none;
+  }
+  .login .container {
+    width: 100%;
+  }
+  .login .right {
+    width: 100%;
+    margin: auto;
+    display: block;
+  }
+  .login .right input,
+  .login .right .submit {
+    width: 100%;
+  }
+  .login .mobileSignUp {
+    display: inline-block;
+  }
+  .login .mobileSignUp p,
+  .login .mobileSignUp a {
+    display: inline;
+  }
+  .login .computerSignUp {
+    display: none;
+  }
+  .bgImg {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .login {
+    width: 95%;
+    padding: 2rem;
+  }
+  .bgImg {
+    display: none;
+  }
+}
+
+.messages {
+  font-size: 1.4rem;
+  transition: 1s;
+  color: red;
+  margin-top: 2px;
+}
+
+.messages li {
+  list-style: none;
+}
+
+@keyframes example {
+  from {
+    top: -60px;
+  }
+  to {
+    top: 60px;
+  }
+}

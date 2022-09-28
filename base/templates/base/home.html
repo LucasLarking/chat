@@ -1,35 +1,34 @@
-{% extends 'main.html' %} {% block content%}
-<h1>Landningssida</h1>
+{% extends 'main.html' %}
+{% block content%}
+{% load static %}
 
+<div class="mainContainer">
+    <form method="GET" action="{% url 'home'%}" class="searchbar one">
+        <input type="text" name="q" placeholder="Sök Efter Diskutioner">
+    </form>
 
-
-<div class="homeContainer">
-    <div class="topicsContainer">
+    <div class="topicContainer two">
+        <a class="topic" href="{% url 'home' %}">Alla Ämnen</a>
         {% include 'base/topics_component.html'%}
+        <a href="{% url 'alltopics' %}">Fler Ämnen</a>
+
     </div>
 
-    <div class="threads">
-        <h5>{{room_count}} Diskutioner</h5>
-
-        <a href="{% url 'create-room' %}">Create Room</a>
-        <hr> {% include 'base/feed_component.html'%}
+    <div class="threadsContainer three">
+        <div>
+            <div class="head">
+                <h2>6 Diskutioner</h2>
+                <a class="plusContainer" href="{% url 'create-room' %}">
+                    <div class="plus"><span class="strokes"></span></div>
+                </a>
+            </div>
+            {% include 'base/room_component.html'%}
+        </div>
     </div>
-
-
-    <div class="recentActicity">
+    <div class="latestContainer fore">
+        <h2>Senaste Nytt</h2>
         {% include 'base/activity_component.html'%}
     </div>
 </div>
-
-
-
-<style>
-    .homeContainer {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        /* background-color: aqua;
-        margin: 20px 0; */
-    }
-</style>
 
 {% endblock content%}

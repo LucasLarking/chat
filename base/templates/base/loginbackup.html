@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% if page == 'login' %}
+<div>
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <label for="username">Användarnamn</label>
+        <input type="text" name="username" placeholder="Användarnamn" id="">
+
+        <label for="password">Lösenord</label>
+        <input type="password" name="password" placeholder="Lösenord" id="">
+
+        <input type="submit" value="LOGGA IN">
+    </form>
+
+    <p>Har du inte ett konto?</p>
+    <a href="{% url 'register'%}">BLI MEDLEM</a>
+</div>
+
+{% else %}
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="BLI MEDLEM">
+
+        <p>Har du redan ett konto?</p>
+        <a href="{% url 'login'%}">LOGGA IN</a>
+
+    </form>
+
+</div>
+{% endif %}
+{% endblock content %}

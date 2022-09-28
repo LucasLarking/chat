@@ -1,0 +1,22 @@
+{% extends 'main.html' %} {% block content%}
+<p>mobile topics</p>
+
+
+
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+
+
+    {% for field in TopicForm %}
+    <div>
+        <label>{{ field.label }}</label>
+        {{ field }}
+        <span class="errorMessage {{field.name}}Error"></span>
+    </div>
+    {% endfor %}
+
+    <input class="submit" type="submit" value="KONFIRMERA">
+</form>
+{% endblock content%}

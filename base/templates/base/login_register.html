@@ -1,37 +1,115 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
+
 {% if page == 'login' %}
-<div>
-    <form action="" method="POST">
+<div class="loginPage">
+    <div class="login">
 
-        {% csrf_token %}
-        <label for="username">Användarnamn</label>
-        <input type="text" name="username" placeholder="Användarnamn" id="">
+        <div class="top">
+        </div>
+        <div class="leftRight">
+            <div class="left">
 
-        <label for="password">Lösenord</label>
-        <input type="password" name="password" placeholder="Lösenord" id="">
+                <img src="{% static 'images/man2.png' %} " alt="">
+                <!-- <img src="/images/GUI copy.png" alt=""> -->
+            </div>
+            <div class="container">
+                <div class="signUp computerSignUp">
+                    <p>Ny Användare?</p><a href="{% url 'register'%}">Bli Medlem</a>
+                </div>
+                <div class="right">
 
-        <input type="submit" value="LOGGA IN">
-    </form>
+                    <h2>Välkommen Tilbaka!</h2>
 
-    <p>Har du inte ett konto?</p>
-    <a href="{% url 'register'%}">BLI MEDLEM</a>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div>
+                            <label for="username">Användarnamn</label>
+                            <input type="text" name="username" placeholder="Användarnamn" id="">
+
+                            {% if messages %}
+                            <ul class="messages">
+
+                                <li>Användarnamn och Lösenord Matchar Inte</li>
+
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="password">Lösenord</label>
+                            <input type="password" name="password" placeholder="Lösenord" id="">
+                        </div>
+                        <div>
+                            <input class="submit" type="submit" value="Logga in"></input>
+                            <div class="signUp mobileSignUp">
+                                <p>Ny Användare?</p><a href="{% url 'register'%}">Bli Medlem</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="bgImg" src="{% static 'images/gui.png' %} " alt="">
 </div>
 
 {% else %}
+<div class="loginPage">
+    <div class="login" style="height: 50rem;">
 
-<div>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="BLI MEDLEM">
+        <div class="top">
+        </div>
+        <div class="leftRight">
+            <div class="left">
 
-        <p>Har du redan ett konto?</p>
-        <a href="{% url 'login'%}">LOGGA IN</a>
-    
-    </form>
+                <img src="{% static 'images/man2.png' %} " alt="">
+                <!-- <img src="/images/GUI copy.png" alt=""> -->
+            </div>
+            <div class="container">
+                <div class="signUp computerSignUp">
+                    <p>Har du redan ett konto?</p><a href="{% url 'login'%}">Logga In</a>
+                </div>
+                <div class="right">
 
+                    <h2>Skapa ett konto!</h2>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div>
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+                            {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endfor%}
+                        <div>
+                            <input class="submit" type="submit" value="BLI MEDLEM"></input>
+                            <div class="signUp mobileSignUp">
+                                <p>Har du redan ett konto</p><a href="{% url 'login'%}">Logga In</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="bgImg" src="{% static 'images/gui.png' %} " alt="">
 </div>
+
 {% endif %}
+
+
+<style>
+    body {
+        max-height: 100vh;
+        overflow: hidden;
+    }
+</style>
+
+
 {% endblock content %}
